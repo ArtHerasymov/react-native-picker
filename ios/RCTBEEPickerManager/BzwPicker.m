@@ -44,7 +44,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, 40)];
     view.backgroundColor = [UIColor cyanColor];
     
-    [self addSubview:view];
+    // [self addSubview:view];/
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.leftBtn.frame = CGRectMake(10, 5, 90, 30);
