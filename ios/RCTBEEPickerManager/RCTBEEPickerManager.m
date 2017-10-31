@@ -86,7 +86,7 @@ RCT_EXPORT_METHOD(_init:(NSDictionary *)indic){
         
         [self.window addSubview:_pick];
         
-        [UIView animateWithDuration:.3 animations:^{
+        [UIView animateWithDuration:0 animations:^{
             
             [_pick setFrame:CGRectMake(0, SCREEN_HEIGHT-self.height, SCREEN_WIDTH, self.height)];
             
@@ -100,7 +100,7 @@ RCT_EXPORT_METHOD(show){
     if (self.pick) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:.3 animations:^{
+            [UIView animateWithDuration:0 animations:^{
                 
                 [_pick setFrame:CGRectMake(0, SCREEN_HEIGHT-self.height, SCREEN_WIDTH, self.height)];
                 
@@ -113,7 +113,7 @@ RCT_EXPORT_METHOD(hide){
     
     if (self.pick) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:.3 animations:^{
+            [UIView animateWithDuration:0 animations:^{
                 [_pick setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.height)];
             }];
         });

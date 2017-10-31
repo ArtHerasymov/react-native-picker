@@ -82,7 +82,7 @@
 //
 //    [view addSubview:cenLabel];
 
-    self.pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40)];
+    self.pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     self.pick.delegate = self;
     self.pick.dataSource = self;
     self.pick.showsSelectionIndicator=YES;
@@ -602,7 +602,7 @@
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:.2f animations:^{
+        [UIView animateWithDuration:0 animations:^{
             
             [self setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 250)];
             
@@ -640,7 +640,7 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:.2f animations:^{
+        [UIView animateWithDuration:0 animations:^{
             
             [self setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 250)];
         }];
