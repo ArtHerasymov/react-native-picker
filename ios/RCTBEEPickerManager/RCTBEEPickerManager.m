@@ -29,9 +29,10 @@ RCT_EXPORT_METHOD(_init:(NSDictionary *)indic){
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication].keyWindow endEditing:YES];
     });
-    
-    self.window = [UIApplication sharedApplication].keyWindow;
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.window = [UIApplication sharedApplication].keyWindow;
+    });
+
     NSString *pickerConfirmBtnText=indic[@"pickerConfirmBtnText"];
     NSString *pickerCancelBtnText=indic[@"pickerCancelBtnText"];
     NSString *pickerTitleText=indic[@"pickerTitleText"];
