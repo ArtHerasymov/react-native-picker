@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -343,6 +344,7 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
             }
 
             int height = barViewHeight + pickerViewHeight;
+
             if (dialog == null) {
                 dialog = new Dialog(activity, R.style.Dialog_Full_Screen);
                 dialog.setContentView(view);
@@ -352,7 +354,7 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                     layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
                     layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
                     layoutParams.format = PixelFormat.TRANSPARENT;
-                    layoutParams.windowAnimations = R.style.PickerAnim;
+//                    layoutParams.windowAnimations = R.style.PickerAnim;
                     layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                     layoutParams.height = height;
                     layoutParams.gravity = Gravity.BOTTOM;
@@ -454,7 +456,9 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
     @ReactMethod
     public void getHeight(Callback callback) {
         if (callback != null) {
-            callback.invoke(barViewHeight + pickerViewHeight);
+            Activity activity = getCurrentActivity();
+            DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
+            callback.invoke(Math.round(pickerViewAlone.getViewHeight() / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)));
         }
     }
 
