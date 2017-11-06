@@ -124,6 +124,8 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
 
     private PickerViewLinkage pickerViewLinkage;
     private PickerViewAlone pickerViewAlone;
+    private int barViewHeight;
+    private int pickerViewHeight;
 
     public PickerViewModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -148,7 +150,6 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
             pickerViewLinkage = (PickerViewLinkage) view.findViewById(R.id.pickerViewLinkage);
             pickerViewAlone = (PickerViewAlone) view.findViewById(R.id.pickerViewAlone);
 
-            int barViewHeight;
             if (options.hasKey(PICKER_TOOL_BAR_HEIGHT)) {
                 try {
                     barViewHeight = options.getInt(PICKER_TOOL_BAR_HEIGHT);
@@ -286,7 +287,6 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
 
             ReadableArray pickerData = options.getArray(PICKER_DATA);
 
-            int pickerViewHeight;
             String name = pickerData.getType(0).name();
             switch (name) {
                 case "Map":
@@ -449,6 +449,13 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
             selectValue[i] = value;
         }
         return selectValue;
+    }
+
+    @ReactMethod
+    public void getHeight(Callback callback) {
+        if (callback != null) {
+            callback.invoke(barViewHeight + pickerViewHeight);
+        }
     }
 
     private void select(String[] selectedValue) {

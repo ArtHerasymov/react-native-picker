@@ -90,5 +90,9 @@ export default {
             }
             fn(returnValue);
         });
+    },
+
+    getHeight(fn) {
+        Picker.getHeight(fn);
     }
 };
